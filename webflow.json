@@ -1,6 +1,7 @@
 {
   "cloud": {
-    "framework": "astro"
+    "framework": "astro",
+    "project_id": "f8e3a85f-262f-4c19-a7bd-2b9ccd2fb587"
   },
   "devlink": {
     "rootDir": "./devlink",
@@ -8,6 +9,23 @@
     "fileExtensions": {
       "js": "jsx"
     }
+  },
+  "components": {
+    "PropertyOverview": {
+      "type": "component",
+      "name": "PropertyOverview",
+      "description": "A component that displays a grid of properties",
+      "props": {
+        "properties": { "type": "array", "description": "An array of properties" }
+      }
+    },
+    "PropertyCard": {
+      "type": "component",
+      "name": "PropertyCard",
+      "description": "A component that displays a property card",
+      "props": {
+        "property": { "type": "object", "description": "A property object" }
+      }
+    }
   }
 }
- 
