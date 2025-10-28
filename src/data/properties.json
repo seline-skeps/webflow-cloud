@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Downtown Apartment",
+    "type": "Apartment",
+    "price": 2500000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sqft": 1200,
+    "location": "Manhattan, NY",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=400&fit=crop",
+    "description": "Stunning modern apartment with city views, high-end finishes, and premium amenities.",
+    "yearBuilt": 2020,
+    "parking": 1,
+    "amenities": ["Gym", "Pool", "Concierge", "Rooftop"],
+    "status": "For Sale",
+    "agent": {
+      "name": "John Doe",
+      "phone": "+1 (555) 123-4567",
+      "email": "john.doe@example.com"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Luxury Beach House",
+    "type": "House",
+    "price": 4500000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sqft": 2500,
+    "location": "Malibu, CA",
+    "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+    "description": "Oceanfront luxury home with private beach access, infinity pool, and panoramic ocean views.",
+    "yearBuilt": 2018,
+    "parking": 3,
+    "amenities": ["Private Beach", "Infinity Pool", "Wine Cellar", "Home Theater"],
+    "status": "For Sale",
+    "agent": {
+      "name": "Jane Smith",
+      "phone": "+1 (555) 234-5678",
+      "email": "jane.smith@example.com"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Historic Brownstone",
+    "type": "Townhouse",
+    "price": 1800000,
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sqft": 1800,
+    "location": "Brooklyn, NY",
+    "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop",
+    "description": "Beautifully restored historic brownstone with original details and modern updates.",
+    "yearBuilt": 1895,
+    "parking": 0,
+    "amenities": ["Garden", "Fireplace", "Hardwood Floors", "High Ceilings"],
+    "status": "For Sale",
+    "agent": {
+      "name": "Mike Johnson",
+      "phone": "+1 (555) 345-6789",
+      "email": "mike.johnson@example.com"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Penthouse with City Views",
+    "type": "Penthouse",
+    "price": 8500000,
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sqft": 4000,
+    "location": "Chicago, IL",
+    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop",
+    "description": "Exclusive penthouse with 360-degree city views, private elevator, and luxury finishes throughout.",
+    "yearBuilt": 2022,
+    "parking": 2,
+    "amenities": ["Private Elevator", "Rooftop Terrace", "Wine Cellar", "Smart Home"],
+    "status": "For Sale",
+    "agent": {
+      "name": "Sarah Wilson",
+      "phone": "+1 (555) 456-7890",
+      "email": "sarah.wilson@example.com"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Mountain Retreat Cabin",
+    "type": "Cabin",
+    "price": 750000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sqft": 1500,
+    "location": "Aspen, CO",
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop",
+    "description": "Cozy mountain cabin with stunning mountain views, perfect for year-round living or vacation rental.",
+    "yearBuilt": 2015,
+    "parking": 2,
+    "amenities": ["Fireplace", "Hot Tub", "Mountain Views", "Ski Storage"],
+    "status": "For Sale",
+    "agent": {
+      "name": "David Brown",
+      "phone": "+1 (555) 567-8901",
+      "email": "david.brown@example.com"
+    }
+  }
+]
