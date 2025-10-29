@@ -13,5 +13,4 @@ export * from "./DevLinkProvider";
 export * from "./Footer";
 export * from "./LocaleDropdown";
 export * from "./Navbar";
-export { default as PropertyOverview } from "./PropertyOverview";
-export { default as PropertyCard } from "./cards/Property";
+export * from "./Property";

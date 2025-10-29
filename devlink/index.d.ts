@@ -13,3 +13,4 @@ export * from "./DevLinkProvider";
 export * from "./Footer";
 export * from "./LocaleDropdown";
 export * from "./Navbar";
+export * from "./Property";

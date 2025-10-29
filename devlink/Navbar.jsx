@@ -11,12 +11,16 @@ const _interactionsData = JSON.parse(
 
 export function Navbar({
   as: _Component = _Builtin.Section,
-  navbarLinkFeatures = "Features",
+  navbarTitle = "Features",
   navbarLinkProducts = "Products",
   navbarLinkResources = "Resources",
   navbarLinkContact = "Contact",
   buttonTextGetStarted = "Get started",
   localeDropdownSlot,
+
+  navbarLink = {
+    href: "#",
+  },
 }) {
   _interactions.useInteractions(_interactionsData, _styles);
 
@@ -73,35 +77,9 @@ export function Navbar({
             >
               <_Builtin.NavbarLink
                 className={_utils.cx(_styles, "navbar-link")}
-                options={{
-                  href: "#",
-                }}
+                options={navbarLink}
               >
-                {navbarLinkFeatures}
-              </_Builtin.NavbarLink>
-              <_Builtin.NavbarLink
-                className={_utils.cx(_styles, "navbar-link")}
-                options={{
-                  href: "/investment-strategies",
-                }}
-              >
-                {navbarLinkProducts}
-              </_Builtin.NavbarLink>
-              <_Builtin.NavbarLink
-                className={_utils.cx(_styles, "navbar-link")}
-                options={{
-                  href: "#",
-                }}
-              >
-                {navbarLinkResources}
-              </_Builtin.NavbarLink>
-              <_Builtin.NavbarLink
-                className={_utils.cx(_styles, "navbar-link")}
-                options={{
-                  href: "/contact-us",
-                }}
-              >
-                {navbarLinkContact}
+                {navbarTitle}
               </_Builtin.NavbarLink>
             </_Builtin.Block>
             <_Builtin.Block

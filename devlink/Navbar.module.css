@@ -1,3 +1,7 @@
+.navbar {
+  background-color: hsla(0, 0.00%, 0.00%, 1.00);
+}
+
 .navbar-component {
   display: flex;
   min-height: 80px;

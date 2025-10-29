@@ -16,6 +16,12 @@ export default defineConfig({
 
   integrations: [react()],
   vite: {
+    css: {
+      modules: {
+        localsConvention: 'camelCase',
+        generateScopedName: '[name]__[local]___[hash:base64:5]'
+      }
+    },
     resolve: {
       // Use react-dom/server.edge instead of react-dom/server.browser for React 19.
       // Without this, MessageChannel from node:worker_threads needs to be polyfilled.

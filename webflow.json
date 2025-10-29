@@ -16,7 +16,10 @@
       "name": "PropertyOverview",
       "description": "A component that displays a grid of properties",
       "props": {
-        "properties": { "type": "array", "description": "An array of properties" }
+        "properties": {
+          "type": "array",
+          "description": "An array of properties"
+        }
       }
     },
     "PropertyCard": {
@@ -24,8 +27,18 @@
       "name": "PropertyCard",
       "description": "A component that displays a property card",
       "props": {
-        "property": { "type": "object", "description": "A property object" }
+        "property": {
+          "type": "object",
+          "description": "A property object"
+        }
       }
+    }
+  },
+  "telemetry": {
+    "global": {
+      "allowTelemetry": false,
+      "lastPrompted": 1761658561181,
+      "version": "1.8.47"
     }
   }
 }

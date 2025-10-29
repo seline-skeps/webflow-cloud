@@ -1,60 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Section, Container, Block, Link } from "../../devlink/_Builtin/Basic";
+import propertiesData from "../data/properties.json";
+import { Property } from "../../devlink/Property";
 ---
 
-<Layout>
-  <Section
-    client:load
-    tag="section"
-    className="margin-bottom-24px"
-    style={{
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <Container>
-      <Block
-        tag="div"
-        className="hero-split"
-        style={{
-          textAlign: "center",
-          maxWidth: "600px",
-          margin: "0 auto",
-        }}
-      >
-        <h1 class="hero-title">Dynamisch Woningaanbod</h1>
-        <div style={{ marginTop: "20px" }}>
-          <Link
-            button={true}
-            options={{
-              href: "/app/properties",
-            }}
-            className="button-primary"
-          >
-            Woningaanbod bekijken
-          </Link>
-        </div>
-      </Block>
-    </Container>
-  </Section>
-</Layout>
-
-<style>
-  .button-primary {
-    border-radius: 4px;
-    background: #830dd7;
-    color: #ffffff;
-    box-shadow:
-      0px 0.5px 1px rgba(0, 0, 0, 0.25),
-      inset 0px 29px 23px -16px rgba(255, 255, 255, 0.04),
-      inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.2);
-  }
-
-  .button-primary:hover {
-    background: #1536ae;
-    color: #ffffff;
-  }
-</style>
+<div>
+  <section>
+    {
+      propertiesData.map((property) => (
+        <Property 
+          imageImage={property.image}
+          locationTitle={property.location}
+          addressTitle={property.title}
+          priceText={`$${property.price.toLocaleString()}`}
+        />
+      ))
+    }
+  </section>
+</div>
