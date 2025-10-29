@@ -2,7 +2,7 @@
 import React from "react";
 import * as _Builtin from "./_Builtin";
 import * as _utils from "./utils";
-import "./Property.css";
+import _styles from "./Property.module.css";
 
 export function Property({
   as: _Component = _Builtin.Block,
@@ -22,33 +22,36 @@ export function Property({
 }) {
   return (
     <_Component
-      className="property-card"
-      id="w-node-_81fbccf7-6968-febe-d02c-7a4e845b0c98-845b0c98"
+      className={_utils.cx(_styles, "property-card")}
+      id={_utils.cx(
+        _styles,
+        "w-node-_81fbccf7-6968-febe-d02c-7a4e845b0c98-845b0c98"
+      )}
       tag="div"
     >
       <_Builtin.Image
-        className="property-image"
+        className={_utils.cx(_styles, "property-image")}
         width="auto"
         height="auto"
         loading="lazy"
         src={imageImage}
       />
-      <_Builtin.Block className="div-block" tag="div">
-        <_Builtin.Paragraph className="property-location">
+      <_Builtin.Block className={_utils.cx(_styles, "div-block")} tag="div">
+        <_Builtin.Paragraph className={_utils.cx(_styles, "property-location")}>
           {locationTitle}
         </_Builtin.Paragraph>
         <_Builtin.Heading
-          className="heading property-heading"
+          className={_utils.cx(_styles, "heading", "property-heading")}
           tag={addressTitleTag}
         >
           {addressTitle}
         </_Builtin.Heading>
-        <_Builtin.Block className="div-block-2" tag="div">
-          <_Builtin.Paragraph className="property-price">
+        <_Builtin.Block className={_utils.cx(_styles, "div-block-2")} tag="div">
+          <_Builtin.Paragraph className={_utils.cx(_styles, "property-price")}>
             {priceText}
           </_Builtin.Paragraph>
           <_Builtin.Link
-            className="read-more-button"
+            className={_utils.cx(_styles, "read-more-button")}
             button={true}
             block=""
             options={buttonLink}

@@ -8,6 +8,8 @@
   border-radius: 15px;
 
   background-color: hsla(0, 100.00%, 99.33%, 1.00);
+
+  color: hsla(0, 21.95%, 38.27%, 1.00);
 }
 
 .property-image {
@@ -39,7 +41,8 @@
 .heading.property-heading {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-family: Satoshi;
+  font-family: Montserrat, sans-serif;
+  color: hsla(0, 0.00%, 4.00%, 1.00);
   font-weight: 500;
 }
 
