@@ -1,21 +1,28 @@
 import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
-
+import tailwindcss from "@tailwindcss/vite";
 import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
   base: "/app",
   output: "server",
+  integrations: [react()],
   adapter: cloudflare({
     platformProxy: {
       enabled: true
     }
   }),
-
-  integrations: [react()],
   vite: {
+    plugins: [
+      tailwindcss({
+        content: [
+          "./src/**/*.{astro,jsx,tsx,js,ts}",
+          "./devlink/**/*.{jsx,js}"
+        ]
+      })
+    ],
     css: {
       modules: {
         localsConvention: 'camelCase',

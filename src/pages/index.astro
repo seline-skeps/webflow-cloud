@@ -5,85 +5,26 @@ import { Property } from "../../devlink/Property";
 ---
 
 <Layout>
-  <div class="properties-container">
-    <h1 class="page-title">Woningaanbod in Opsterland</h1>
-    <p class="page-subtitle">Ontdek de beste woningen in gemeente Opsterland</p>
-    
-    <section class="properties-grid">
+  <div class="mx-auto py-16 min-h-screen px-10 md:py-16">
+    <div class="flex flex-col items-center justify-center gap-6 my-10">
+      <h1 class="text-center text-4xl font-bold">Woningaanbod in Opsterland</h1>
+      <p class="text-center text-sm text-gray-500">Ontdek de beste woningen in gemeente Opsterland</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         propertiesData.map((property) => (
-          <Property 
-            imageImage={property.image}
-            locationTitle={property.location}
-            addressTitle={property.title}
-            priceText={property.price.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' })}
-          />
+            <Property
+              imageImage={property.image}
+              locationTitle={property.location}
+              addressTitle={property.title}
+              priceText={property.price.toLocaleString("nl-NL", {
+                style: "currency",
+                currency: "EUR",
+              })}
+            />
         ))
       }
-    </section>
+    </div>
   </div>
 </Layout>
-
-<style>
-  .properties-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    min-height: 100vh;
-  }
-
-  .page-title {
-    font-family: 'Satoshi', sans-serif;
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-  }
-
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--gray-300);
-    text-align: center;
-    margin: 0 0 4rem 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .properties-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .properties-container {
-      padding: 2rem 1rem;
-    }
-    
-    .properties-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .properties-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (min-width: 1600px) {
-    .properties-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-</style>
