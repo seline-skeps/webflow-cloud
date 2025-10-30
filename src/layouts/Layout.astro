@@ -2,6 +2,8 @@
 import { DevLinkProvider } from "../../devlink/DevLinkProvider.jsx";
 import "../../devlink/global.css";
 import "../styles/global.css";
+import { Navbar } from "../../devlink/Navbar.jsx";
+import { Footer } from "../../devlink/Footer.jsx";
 
 const assetsPrefix =
   import.meta.env.ASSETS_PREFIX || import.meta.env.BASE_URL || "";
@@ -24,11 +26,16 @@ const assetsPrefix =
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>Webflow Cloud - Astro Starter</title>
+    <title>Dynamisch woningoverzicht</title>
   </head>
+  
   <body class="m-0 h-full w-full">
     <DevLinkProvider client:load>
+      <Navbar />
+
       <slot />
+
+      <Footer />
     </DevLinkProvider>
   </body>
 </html>

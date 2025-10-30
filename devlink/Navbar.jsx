@@ -21,6 +21,14 @@ export function Navbar({
   navbarLink = {
     href: "#",
   },
+
+  buttonLink = {
+    href: "#",
+  },
+
+  logoLink = {
+    href: "#",
+  },
 }) {
   _interactions.useInteractions(_interactionsData, _styles);
 
@@ -52,9 +60,7 @@ export function Navbar({
         >
           <_Builtin.NavbarBrand
             className={_utils.cx(_styles, "navbar-logo-link")}
-            options={{
-              href: "#",
-            }}
+            options={logoLink}
           >
             <_Builtin.Image
               loading="lazy"
@@ -72,17 +78,6 @@ export function Navbar({
             role="navigation"
           >
             <_Builtin.Block
-              className={_utils.cx(_styles, "menu-left")}
-              tag="div"
-            >
-              <_Builtin.NavbarLink
-                className={_utils.cx(_styles, "navbar-link")}
-                options={navbarLink}
-              >
-                {navbarTitle}
-              </_Builtin.NavbarLink>
-            </_Builtin.Block>
-            <_Builtin.Block
               className={_utils.cx(_styles, "navbar-menu-right")}
               tag="div"
             >
@@ -91,30 +86,14 @@ export function Navbar({
                 tag="div"
               >
                 <_Builtin.Link
-                  className={_utils.cx(
-                    _styles,
-                    "button-secondary",
-                    "show-tablet"
-                  )}
-                  button={false}
-                  block="inline"
-                  options={{
-                    href: "#",
-                  }}
-                >
-                  <_Builtin.Block tag="div">{"Log in"}</_Builtin.Block>
-                </_Builtin.Link>
-                <_Builtin.Link
                   className={_utils.cx(_styles, "button")}
                   button={false}
                   block="inline"
                   options={{
-                    href: "#",
+                    href: "/app",
                   }}
                 >
-                  <_Builtin.Block tag="div">
-                    {buttonTextGetStarted}
-                  </_Builtin.Block>
+                  <_Builtin.Block tag="div">{"Aanbod bekijken"}</_Builtin.Block>
                 </_Builtin.Link>
               </_Builtin.Block>
             </_Builtin.Block>
