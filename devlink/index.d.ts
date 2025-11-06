@@ -13,6 +13,5 @@ export * from "./Button";
 export * from "./DevLinkProvider";
 export * from "./Footer";
 export * from "./LocaleDropdown";
-export * from "./LoginForm";
 export * from "./Navbar";
 export * from "./Property";
