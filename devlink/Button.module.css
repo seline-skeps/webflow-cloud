@@ -44,5 +44,10 @@
   }
 }
 
+.button.rounded {
+  padding: 5px 10px;
+  border-radius: 8rem;
+}
+
 #w-node-_3d279102-1bdf-3cf1-498d-f61abb28e687-bb28e687 {
 }

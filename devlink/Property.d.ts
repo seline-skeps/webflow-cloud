@@ -11,4 +11,5 @@ declare function Property(props: {
   priceText?: React.ReactNode;
   buttonLink?: Types.Basic.Link;
   buttonText?: React.ReactNode;
+  statusText?: React.ReactNode;
 }): React.JSX.Element;

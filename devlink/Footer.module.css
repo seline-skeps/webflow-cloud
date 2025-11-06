@@ -70,7 +70,7 @@
 }
 
 .text-medium {
-  color: hsla(0, 0.00%, 100.00%, 0.70);
+  color: var(--white);
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: normal;
@@ -177,6 +177,11 @@
     border-color: #7f56d9;
     background-color: #7f56d9;
   }
+}
+
+.button.rounded {
+  padding: 5px 10px;
+  border-radius: 8rem;
 }
 
 .text-small {

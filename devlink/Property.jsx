@@ -19,6 +19,7 @@ export function Property({
   },
 
   buttonText = "->",
+  statusText = "Te koop",
 }) {
   return (
     <_Component
@@ -29,6 +30,11 @@ export function Property({
       )}
       tag="div"
     >
+      <_Builtin.Block className={_utils.cx(_styles, "div-block-3")} tag="div">
+        <_Builtin.Block className={_utils.cx(_styles, "text-medium")} tag="div">
+          {statusText}
+        </_Builtin.Block>
+      </_Builtin.Block>
       <_Builtin.Image
         className={_utils.cx(_styles, "property-image")}
         width="auto"
@@ -51,7 +57,7 @@ export function Property({
             {priceText}
           </_Builtin.Paragraph>
           <_Builtin.Link
-            className={_utils.cx(_styles, "read-more-button")}
+            className={_utils.cx(_styles, "button", "rounded")}
             button={true}
             block=""
             options={buttonLink}

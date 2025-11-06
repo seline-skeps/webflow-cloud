@@ -24,14 +24,15 @@ const propertiesData = await getProperties(runtimeEnv);
           
           return (
             <Property
+              statusText={property.status}
               imageImage={property.main_image_url || ""}
               locationTitle={property.location.plaats}
               addressTitle={property.name}
               priceText={formatPrice(property.price)}
-            />
-          );
-        })
-      }
+              />
+            );
+          })
+        }
+      </div>
     </div>
-  </div>
-</Layout>
+  </Layout>
