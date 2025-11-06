@@ -72,59 +72,10 @@ export function Navbar({
               src="https://cdn.prod.website-files.com/69007eb98a3b6cc782569739/69007ebb8a3b6cc782569832_AstralFund%20Logo.svg"
             />
           </_Builtin.NavbarBrand>
-          <_Builtin.NavbarMenu
-            className={_utils.cx(_styles, "navbar-menu")}
-            tag="nav"
-            role="navigation"
-          >
-            <_Builtin.Block
-              className={_utils.cx(_styles, "navbar-menu-right")}
-              tag="div"
-            >
-              <_Builtin.Block
-                className={_utils.cx(_styles, "navbar-button-wrapper")}
-                tag="div"
-              >
-                <_Builtin.Link
-                  className={_utils.cx(_styles, "button")}
-                  button={false}
-                  block="inline"
-                  options={{
-                    href: "/app",
-                  }}
-                >
-                  <_Builtin.Block tag="div">{"Aanbod bekijken"}</_Builtin.Block>
-                </_Builtin.Link>
-              </_Builtin.Block>
-            </_Builtin.Block>
-          </_Builtin.NavbarMenu>
           <_Builtin.NavbarButton
             className={_utils.cx(_styles, "navbar-menu-button")}
             tag="div"
-          >
-            <_Builtin.Block
-              className={_utils.cx(_styles, "menu-icon-component")}
-              tag="div"
-            >
-              <_Builtin.Block
-                className={_utils.cx(_styles, "menu-icon-line-top")}
-                tag="div"
-              />
-              <_Builtin.Block
-                className={_utils.cx(_styles, "menu-icon-line-middle")}
-                tag="div"
-              >
-                <_Builtin.Block
-                  className={_utils.cx(_styles, "menu-icon-middle-line")}
-                  tag="div"
-                />
-              </_Builtin.Block>
-              <_Builtin.Block
-                className={_utils.cx(_styles, "menu-icon")}
-                tag="div"
-              />
-            </_Builtin.Block>
-          </_Builtin.NavbarButton>
+          />
         </_Builtin.Block>
       </_Builtin.NavbarWrapper>
     </_Component>
