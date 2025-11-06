@@ -2,9 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import { Property } from "../../devlink/Property";
 import type { PropertyEntry } from "../types/property";
-import { getProperties, formatLocation, formatPrice } from "../utils/properties";
+import { getProperties, formatPrice } from "../utils/properties";
 
-// Fetch properties data
+// Fetch properties data.
 const runtimeEnv = Astro.locals?.runtime?.env;
 const propertiesData = await getProperties(runtimeEnv);
 ---
@@ -18,16 +18,15 @@ const propertiesData = await getProperties(runtimeEnv);
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 md:gap-8 xl:grid-cols-2 2xl:grid-cols-3">
       {
         propertiesData.map((property: PropertyEntry) => {
-          const locationStr = formatLocation(property.location);
           
           return (
             <Property
               imageImage={property.main_image_url || ""}
-              locationTitle={locationStr}
-              addressTitle={property.name || locationStr}
+              locationTitle={property.location.plaats}
+              addressTitle={property.name}
               priceText={formatPrice(property.price)}
             />
           );

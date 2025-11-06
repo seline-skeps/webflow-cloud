@@ -1,29 +1,6 @@
 import type { PropertyEntry, LocationData } from "../types/property";
 
 /**
- * Helper function to format location object to string
- */
-export function formatLocation(location: LocationData | undefined): string {
-  if (!location) return "";
-  
-  const parts: string[] = [];
-  if (location.straat) {
-    parts.push(location.straat);
-    if (location.huisnummer) {
-      parts.push(location.huisnummer);
-      if (location.huisnummer_toevoeging) {
-        parts.push(location.huisnummer_toevoeging);
-      }
-    }
-  }
-  if (location.postcode) parts.push(location.postcode);
-  if (location.plaats) parts.push(location.plaats);
-  if (location.provincie) parts.push(location.provincie);
-  
-  return parts.join(" ");
-}
-
-/**
  * Helper function to encode base64 (works in Cloudflare Workers)
  */
 function encodeBase64(str: string): string {

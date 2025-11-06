@@ -16,10 +16,6 @@
   color: hsla(0, 21.95%, 38.27%, 1.00);
 }
 
-.property-card:hover {
-  transform: scale(1.1);
-}
-
 @media screen and (max-width: 767px) {
   .property-card:hover {
     transform: none;
@@ -33,7 +29,7 @@
 }
 
 .property-image {
-  aspect-ratio: 3/2;
+  aspect-ratio: 16/9;
   border-radius: 15px 15px 0px 0px;
   object-fit: cover;
 }
