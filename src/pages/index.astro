@@ -1,29 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import propertiesData from "../data/properties.json";
 import { Property } from "../../devlink/Property";
+import type { PropertyEntry } from "../types/property";
+import { getProperties, formatLocation, formatPrice } from "../utils/properties";
+
+// Fetch properties data
+const runtimeEnv = Astro.locals?.runtime?.env;
+const propertiesData = await getProperties(runtimeEnv);
 ---
 
 <Layout>
   <div class="mx-auto py-16 min-h-screen px-10 md:px-40 md:py-16">
     <div class="flex flex-col items-center justify-center gap-6 my-10">
       <h1 class="text-center">Woningaanbod in Opsterland</h1>
-      <p class="text-center text-sm text-gray-500">Ontdek de beste woningen in gemeente Opsterland</p>
+      <p class="text-center text-sm text-gray-500">
+        Ontdek de beste woningen in gemeente Opsterland
+      </p>
     </div>
 
     <div class="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
-        propertiesData.map((property) => (
+        propertiesData.map((property: PropertyEntry) => {
+          const locationStr = formatLocation(property.location);
+          
+          return (
             <Property
-              imageImage={property.image}
-              locationTitle={property.location}
-              addressTitle={property.title}
-              priceText={property.price.toLocaleString("nl-NL", {
-                style: "currency",
-                currency: "EUR",
-              })}
+              imageImage={property.main_image_url || ""}
+              locationTitle={locationStr}
+              addressTitle={property.name || locationStr}
+              priceText={formatPrice(property.price)}
             />
-        ))
+          );
+        })
       }
     </div>
   </div>

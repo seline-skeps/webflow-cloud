@@ -2172,19 +2172,20 @@ textarea.w-select {
   --gray300-1490ec53: hsla(0, 0.00%, 70.00%, 1.00);
   --gray500-c8810603: hsla(0, 0.00%, 45.88%, 1.00);
   --borderRadius-c0417f39: hsla(0, 0.00%, 13.33%, 1.00);
-  --primary: #996aff;
-  --yellow-green-700: #7aa35a;
+  --primary: #677db7;
+  --secondary: #454b66;
   --white: #ececec;
   --gray-300: #b3b3b3;
   --gray-500: #757575;
   --gray-800: #222;
-  --primary: #996aff;
-  --primary-2: #996aff;
+  --primary: #677db7;
+  --primary-2: #677db7;
   --default-font: Inter, sans-serif;
   --default-padding: 50px;
   --my-number: 10;
   --default-padding-2: 50px;
   --default-padding-3: 50px;
+  --yellow-green-700: #7aa35a;
 }
 
 body {
