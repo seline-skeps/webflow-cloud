@@ -1,25 +1,331 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getPropertyById } from "../utils/properties";
+import { getPropertyById, formatPrice } from "../utils/properties";
+import Image from "astro/components/Image.astro";
+import { Button } from "../../devlink/Button";
 
 const { uuid } = Astro.params;
 const runtimeEnv = Astro.locals?.runtime?.env;
 
 if (!uuid) {
-  return Astro.redirect("/");
+  return Astro.redirect("/app");
+} // Redirect to the home page if the UUID is not valid.
+
+const property = await getPropertyById(uuid, runtimeEnv);
+
+// Helper function to format energy label
+function getEnergyLabel(energie: typeof property.details.energie): string {
+  return energie?.klasse || energie?.type || "-";
 }
 
-let property;
-try {
-  property = await getPropertyById(uuid, runtimeEnv);
-} catch (error) {
-  console.error("Error fetching property:", error);
-  return Astro.redirect("/app");
+// Helper function to format numbers with units
+function formatNumber(value: string | undefined, unit: string): string {
+  if (!value) return "-";
+  return `${value} ${unit}`;
 }
 ---
 
 <Layout>
-  <div>
-    {JSON.stringify(property)}
+  <div class="mx-auto py-8 min-h-screen px-4 md:px-8 lg:px-16 xl:px-24">
+    <!-- Breadcrumbs -->
+    <nav class="mb-6 text-sm text-gray-300">
+      <ol class="flex items-center gap-2 pl-0!">
+        <li><a href="/app" class="hover:underline text-white">Home</a></li>
+        <li class="text-gray-500">/</li>
+        <li><a href="/app" class="hover:underline text-white">Woningaanbod</a></li>
+        <li class="text-gray-500">/</li>
+        <li class="text-gray-400">{property.name}</li>
+      </ol>
+    </nav>
+
+    <!-- Status Badge -->
+    <div class="mb-6">
+      <span class="inline-block px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-sm font-medium text-white">
+        {property.status}
+      </span>
+    </div>
+
+    <!-- Main Image Section -->
+    <div class="mb-8">
+      <Image
+        src={property.main_image_url}
+        alt={property.name}
+        width={1200}
+        height={800}
+        class="w-full h-auto object-cover rounded-lg"
+      />
+    </div>
+
+    <!-- Property Title, Location, and Price -->
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2 text-white">{property.name}</h1>
+      <p class="text-lg text-gray-300 mb-4">
+        {property.location.straat} {property.location.huisnummer}
+        {property.location.huisnummer_toevoeging ? ` ${property.location.huisnummer_toevoeging}` : ""}, {property.location.plaats}
+      </p>
+      <p class="text-2xl md:text-3xl font-bold text-white">
+        {formatPrice(property.price)}
+      </p>
+    </div>
+
+    <!-- Key Features Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 py-6 border-t border-b border-gray-700">
+      <div class="flex flex-col">
+        <span class="text-sm text-gray-400 mb-1">Wonen</span>
+        <span class="text-lg font-semibold text-white">
+          {formatNumber(property.details.indeling.oppervlakte_woning, "m²")}
+        </span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm text-gray-400 mb-1">Perceel</span>
+        <span class="text-lg font-semibold text-white">
+          {formatNumber(property.details.indeling.oppervlakte_perceel, "m²")}
+        </span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm text-gray-400 mb-1">Slaapkamers</span>
+        <span class="text-lg font-semibold text-white">
+          {property.details.indeling.aantal_slaapkamers || "-"}
+        </span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm text-gray-400 mb-1">Energielabel</span>
+        <span class="text-lg font-semibold text-white">
+          {getEnergyLabel(property.details.energie)}
+        </span>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    {property.site_content.omschrijving && (
+      <div class="mb-12">
+        <div class="prose max-w-none">
+          <div class="whitespace-pre-line text-gray-300 leading-relaxed">
+            {property.site_content.omschrijving}
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Features/Characteristics Section -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-8 text-white">Kenmerken</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Overdracht -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Overdracht</h3>
+          <dl class="space-y-3">
+            <div>
+              <dt class="text-sm text-gray-400">Status</dt>
+              <dd class="font-medium text-white">{property.status}</dd>
+            </div>
+            <div>
+              <dt class="text-sm text-gray-400">Vraagprijs</dt>
+              <dd class="font-medium text-white">{formatPrice(property.price)}</dd>
+            </div>
+            {property.price.aanvaarding && (
+              <div>
+                <dt class="text-sm text-gray-400">Aanvaarding</dt>
+                <dd class="font-medium text-white">{property.price.aanvaarding}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Energie -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Energie</h3>
+          <dl class="space-y-3">
+            <div>
+              <dt class="text-sm text-gray-400">Energielabel</dt>
+              <dd class="font-medium text-white">{getEnergyLabel(property.details.energie)}</dd>
+            </div>
+            {property.details.energie.isolatie && (
+              <div>
+                <dt class="text-sm text-gray-400">Isolatie</dt>
+                <dd class="font-medium text-white">{property.details.energie.isolatie}</dd>
+              </div>
+            )}
+            {property.details.energie.verwarming && (
+              <div>
+                <dt class="text-sm text-gray-400">Verwarming</dt>
+                <dd class="font-medium text-white">{property.details.energie.verwarming}</dd>
+              </div>
+            )}
+            {property.details.energie.warmwater && (
+              <div>
+                <dt class="text-sm text-gray-400">Warm water</dt>
+                <dd class="font-medium text-white">{property.details.energie.warmwater}</dd>
+              </div>
+            )}
+            {property.details.energie.eigendom && (
+              <div>
+                <dt class="text-sm text-gray-400">Eigendom</dt>
+                <dd class="font-medium text-white">{property.details.energie.eigendom}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Oppervlakten en inhoud -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Oppervlakten en inhoud</h3>
+          <dl class="space-y-3">
+            {property.details.indeling.oppervlakte_perceel && (
+              <div>
+                <dt class="text-sm text-gray-400">Perceel</dt>
+                <dd class="font-medium text-white">{formatNumber(property.details.indeling.oppervlakte_perceel, "m²")}</dd>
+              </div>
+            )}
+            {property.details.indeling.inhoud_woning && (
+              <div>
+                <dt class="text-sm text-gray-400">Inhoud</dt>
+                <dd class="font-medium text-white">{formatNumber(property.details.indeling.inhoud_woning, "m³")}</dd>
+              </div>
+            )}
+            {property.details.indeling.oppervlakte_woning && (
+              <div>
+                <dt class="text-sm text-gray-400">Wonen</dt>
+                <dd class="font-medium text-white">{formatNumber(property.details.indeling.oppervlakte_woning, "m²")}</dd>
+              </div>
+            )}
+            {property.details.indeling.oppervlakte_overige_ruimtes && (
+              <div>
+                <dt class="text-sm text-gray-400">Overige inpandige ruimte</dt>
+                <dd class="font-medium text-white">{formatNumber(property.details.indeling.oppervlakte_overige_ruimtes, "m²")}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Bouwvorm en Onderhoud -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Bouwvorm en Onderhoud</h3>
+          <dl class="space-y-3">
+            <div>
+              <dt class="text-sm text-gray-400">Soort woonhuis</dt>
+              <dd class="font-medium text-white">{property.type}</dd>
+            </div>
+            {property.details.constructie.bouwjaar && (
+              <div>
+                <dt class="text-sm text-gray-400">Bouwjaar</dt>
+                <dd class="font-medium text-white">{property.details.constructie.bouwjaar}</dd>
+              </div>
+            )}
+            {property.details.constructie.dak_type && (
+              <div>
+                <dt class="text-sm text-gray-400">Soort dak</dt>
+                <dd class="font-medium text-white">{property.details.constructie.dak_type}</dd>
+              </div>
+            )}
+            {property.details.overig.onderhoud_binnen && (
+              <div>
+                <dt class="text-sm text-gray-400">Onderhoud binnen</dt>
+                <dd class="font-medium text-white">{property.details.overig.onderhoud_binnen}</dd>
+              </div>
+            )}
+            {property.details.overig.onderhoud_buiten && (
+              <div>
+                <dt class="text-sm text-gray-400">Onderhoud buiten</dt>
+                <dd class="font-medium text-white">{property.details.overig.onderhoud_buiten}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Indeling -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Indeling</h3>
+          <dl class="space-y-3">
+            {property.details.indeling.aantal_kamers && (
+              <div>
+                <dt class="text-sm text-gray-400">Aantal kamers</dt>
+                <dd class="font-medium text-white">{property.details.indeling.aantal_kamers}</dd>
+              </div>
+            )}
+            {property.details.indeling.aantal_slaapkamers && (
+              <div>
+                <dt class="text-sm text-gray-400">Aantal slaapkamers</dt>
+                <dd class="font-medium text-white">{property.details.indeling.aantal_slaapkamers}</dd>
+              </div>
+            )}
+            {property.details.indeling.aantal_badkamers && (
+              <div>
+                <dt class="text-sm text-gray-400">Aantal badkamers</dt>
+                <dd class="font-medium text-white">{property.details.indeling.aantal_badkamers}</dd>
+              </div>
+            )}
+            {property.details.indeling.aantal_woonlagen && (
+              <div>
+                <dt class="text-sm text-gray-400">Aantal woonlagen</dt>
+                <dd class="font-medium text-white">{property.details.indeling.aantal_woonlagen}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Buitenruimte -->
+        {property.details.tuin && (
+          <div>
+            <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Buitenruimte</h3>
+            <dl class="space-y-3">
+              {property.details.tuin.type && (
+                <div>
+                  <dt class="text-sm text-gray-400">Tuin</dt>
+                  <dd class="font-medium text-white">{property.details.tuin.type}</dd>
+                </div>
+              )}
+              {property.details.tuin.kwaliteit && (
+                <div>
+                  <dt class="text-sm text-gray-400">Kwaliteit tuin</dt>
+                  <dd class="font-medium text-white">{property.details.tuin.kwaliteit}</dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        )}
+
+        <!-- Garage -->
+        {property.details.garage && property.details.garage.soort && (
+          <div>
+            <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Garage</h3>
+            <dl class="space-y-3">
+              <div>
+                <dt class="text-sm text-gray-400">Soort garage</dt>
+                <dd class="font-medium text-white">{property.details.garage.soort}</dd>
+              </div>
+              {property.details.garage.voorzieningen && (
+                <div>
+                  <dt class="text-sm text-gray-400">Voorzieningen</dt>
+                  <dd class="font-medium text-white">{property.details.garage.voorzieningen}</dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        )}
+
+        <!-- Overig -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-700 text-white">Overig</h3>
+          <dl class="space-y-3">
+            {property.details.overig.permanente_bewoning !== undefined && (
+              <div>
+                <dt class="text-sm text-gray-400">Permanente bewoning</dt>
+                <dd class="font-medium text-white">{property.details.overig.permanente_bewoning ? "Ja" : "Nee"}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="mb-12">
+      <Button
+        buttonLink={{ href: "/app" }}
+        buttonText="Alle woningen bekijken"
+      />
+    </div>
   </div>
 </Layout>

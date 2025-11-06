@@ -114,5 +114,7 @@ export async function getPropertyById(uuid: string, env?: Record<string, unknown
     throw new Error(`Failed to fetch property: ${response.status} - ${errorText}`);
   }
   
-  return await response.json() as PropertyEntry;
+  const data = await response.json() as { data?: PropertyEntry } | PropertyEntry;
+  // Extract the property data from the response wrapper
+  return ('data' in data && data.data) ? data.data : data as PropertyEntry;
 }

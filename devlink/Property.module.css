@@ -30,7 +30,7 @@
   }
 }
 
-.div-block-3 {
+.property-status {
   position: absolute;
   margin: 10px;
   padding: 5px 10px;
@@ -52,7 +52,7 @@
   object-fit: cover;
 }
 
-.div-block {
+.property-info {
   display: flex;
   padding-right: 10px;
   padding-left: 10px;
@@ -85,6 +85,9 @@
 }
 
 .div-block-2 {
+  position: sticky;
+  bottom: 0px;
+
   display: flex;
   margin-bottom: 10px;
   justify-content: space-between;

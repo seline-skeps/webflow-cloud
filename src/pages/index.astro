@@ -21,18 +21,18 @@ const propertiesData = await getProperties(runtimeEnv);
     <div class="grid grid-cols-1 gap-6 md:gap-8 xl:grid-cols-2 2xl:grid-cols-3">
       {
         propertiesData.map((property: PropertyEntry) => {
-          
           return (
             <Property
               statusText={property.status}
-              imageImage={property.main_image_url || ""}
+              imageImage={property.main_image_url || undefined}
               locationTitle={property.location.plaats}
               addressTitle={property.name}
               priceText={formatPrice(property.price)}
-              />
-            );
-          })
-        }
-      </div>
+              propertyLink={{ href: `/app/${property.uuid}` }}
+            />
+          );
+        })
+      }
     </div>
-  </Layout>
+  </div>
+</Layout>

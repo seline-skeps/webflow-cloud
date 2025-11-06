@@ -20,6 +20,10 @@ export function Property({
 
   buttonText = "->",
   statusText = "Te koop",
+
+  propertyLink = {
+    href: "https://www.google.nl",
+  },
 }) {
   return (
     <_Component
@@ -30,19 +34,32 @@ export function Property({
       )}
       tag="div"
     >
-      <_Builtin.Block className={_utils.cx(_styles, "div-block-3")} tag="div">
-        <_Builtin.Block className={_utils.cx(_styles, "text-medium")} tag="div">
-          {statusText}
+      <_Builtin.Link
+        className={_utils.cx(_styles, "property-link")}
+        button={false}
+        block="inline"
+        options={propertyLink}
+      >
+        <_Builtin.Block
+          className={_utils.cx(_styles, "property-status")}
+          tag="div"
+        >
+          <_Builtin.Block
+            className={_utils.cx(_styles, "text-medium")}
+            tag="div"
+          >
+            {statusText}
+          </_Builtin.Block>
         </_Builtin.Block>
-      </_Builtin.Block>
-      <_Builtin.Image
-        className={_utils.cx(_styles, "property-image")}
-        width="auto"
-        height="auto"
-        loading="lazy"
-        src={imageImage}
-      />
-      <_Builtin.Block className={_utils.cx(_styles, "div-block")} tag="div">
+        <_Builtin.Image
+          className={_utils.cx(_styles, "property-image")}
+          width="auto"
+          height="auto"
+          loading="lazy"
+          src={imageImage}
+        />
+      </_Builtin.Link>
+      <_Builtin.Block className={_utils.cx(_styles, "property-info")} tag="div">
         <_Builtin.Paragraph className={_utils.cx(_styles, "property-location")}>
           {locationTitle}
         </_Builtin.Paragraph>
