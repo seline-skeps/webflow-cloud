@@ -34,54 +34,60 @@ export function Property({
       )}
       tag="div"
     >
-      <_Builtin.Link
-        className={_utils.cx(_styles, "property-link")}
-        button={false}
-        block="inline"
-        options={propertyLink}
-      >
-        <_Builtin.Block
-          className={_utils.cx(_styles, "property-status")}
-          tag="div"
-        >
+      <_Builtin.Block className={_utils.cx(_styles, "div-block-7")} tag="div">
+        <_Builtin.Block className={_utils.cx(_styles, "div-block-4")} tag="div">
           <_Builtin.Block
-            className={_utils.cx(_styles, "text-medium")}
+            className={_utils.cx(_styles, "property-status")}
             tag="div"
           >
-            {statusText}
+            <_Builtin.Block
+              className={_utils.cx(_styles, "text-medium")}
+              tag="div"
+            >
+              {statusText}
+            </_Builtin.Block>
           </_Builtin.Block>
         </_Builtin.Block>
-        <_Builtin.Image
-          className={_utils.cx(_styles, "property-image")}
-          width="auto"
-          height="auto"
-          loading="lazy"
-          src={imageImage}
-        />
-      </_Builtin.Link>
-      <_Builtin.Block className={_utils.cx(_styles, "property-info")} tag="div">
-        <_Builtin.Paragraph className={_utils.cx(_styles, "property-location")}>
-          {locationTitle}
-        </_Builtin.Paragraph>
-        <_Builtin.Heading
-          className={_utils.cx(_styles, "heading", "property-heading")}
-          tag={addressTitleTag}
+        <_Builtin.Link
+          className={_utils.cx(_styles, "property-link")}
+          button={false}
+          block="inline"
+          options={propertyLink}
         >
-          {addressTitle}
-        </_Builtin.Heading>
-        <_Builtin.Block className={_utils.cx(_styles, "div-block-2")} tag="div">
-          <_Builtin.Paragraph className={_utils.cx(_styles, "property-price")}>
-            {priceText}
-          </_Builtin.Paragraph>
-          <_Builtin.Link
-            className={_utils.cx(_styles, "button", "rounded")}
-            button={true}
-            block=""
-            options={buttonLink}
+          <_Builtin.Image
+            className={_utils.cx(_styles, "property-image")}
+            width="auto"
+            height="auto"
+            loading="lazy"
+            src={imageImage}
+          />
+          <_Builtin.Block
+            className={_utils.cx(_styles, "property-info")}
+            tag="div"
           >
-            {buttonText}
-          </_Builtin.Link>
-        </_Builtin.Block>
+            <_Builtin.Paragraph
+              className={_utils.cx(_styles, "property-location")}
+            >
+              {locationTitle}
+            </_Builtin.Paragraph>
+            <_Builtin.Heading
+              className={_utils.cx(_styles, "heading", "property-heading")}
+              tag={addressTitleTag}
+            >
+              {addressTitle}
+            </_Builtin.Heading>
+            <_Builtin.Block
+              className={_utils.cx(_styles, "div-block-2")}
+              tag="div"
+            >
+              <_Builtin.Paragraph
+                className={_utils.cx(_styles, "property-price")}
+              >
+                {priceText}
+              </_Builtin.Paragraph>
+            </_Builtin.Block>
+          </_Builtin.Block>
+        </_Builtin.Link>
       </_Builtin.Block>
     </_Component>
   );
