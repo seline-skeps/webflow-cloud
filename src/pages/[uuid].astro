@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getPropertyById, formatPrice } from "../utils/properties";
 import Image from "astro/components/Image.astro";
 import { Button } from "../../devlink/Button";
+import type { PropertyEntry } from "../types/property";
 
 const { uuid } = Astro.params;
 const runtimeEnv = Astro.locals?.runtime?.env;
@@ -11,7 +12,8 @@ if (!uuid) {
   return Astro.redirect("/app");
 } // Redirect to the home page if the UUID is not valid.
 
-let property;
+let property: PropertyEntry;
+
 try {
   property = await getPropertyById(uuid, runtimeEnv);
 } catch (error) {
