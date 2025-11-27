@@ -11,7 +11,14 @@ if (!uuid) {
   return Astro.redirect("/app");
 } // Redirect to the home page if the UUID is not valid.
 
-const property = await getPropertyById(uuid, runtimeEnv);
+let property;
+try {
+  property = await getPropertyById(uuid, runtimeEnv);
+} catch (error) {
+  // If property not found, redirect to home page
+  console.error(`Property ${uuid} not found:`, error);
+  return Astro.redirect("/app");
+}
 
 // Helper function to format energy label
 function getEnergyLabel(energie: typeof property.details.energie): string {

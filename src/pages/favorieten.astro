@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { FavoritesList } from "../components/FavoritesList.js";
+---
+
+<Layout>
+    <div class="mx-auto py-16 min-h-screen px-10 md:px-40 md:py-16">
+        <div class="flex flex-col items-center justify-center gap-6 my-10">
+            <h1>Favorieten</h1>
+
+            <FavoritesList client:load />
+        </div>
+  </div>
+</Layout>

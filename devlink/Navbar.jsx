@@ -76,6 +76,29 @@ export function Navbar({
             className={_utils.cx(_styles, "navbar-menu-button")}
             tag="div"
           />
+          <_Builtin.Block
+            className={_utils.cx(_styles, "div-block-5")}
+            tag="div"
+          >
+            <_Builtin.Link
+              button={false}
+              block=""
+              options={{
+                href: "/app",
+              }}
+            >
+              {"Woningaanbod"}
+            </_Builtin.Link>
+            <_Builtin.Link
+              button={false}
+              block=""
+              options={{
+                href: "/app/favorieten",
+              }}
+            >
+              {"Favorieten"}
+            </_Builtin.Link>
+          </_Builtin.Block>
         </_Builtin.Block>
       </_Builtin.NavbarWrapper>
     </_Component>

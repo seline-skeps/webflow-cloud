@@ -40,3 +40,9 @@
     background-color: transparent;
   }
 }
+
+.div-block-5 {
+  display: flex;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+}
